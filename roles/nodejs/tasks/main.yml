@@ -1,0 +1,21 @@
+---
+- name: "install nodejs on CentOs"
+  yum:
+          name: nodejs
+          state: present
+  when: ansible_facts['distribution'] == 'CentOS'
+
+
+- name: " install nodejs on ubuntu"
+  apt:
+          name: nodejs
+          state: present
+  when : ansible_facts['distribution'] == 'Ubuntu'
+
+
+- name: " setup users"
+  user:
+          name: "{{item.username}}"
+          groups: developers
+          shell: "{{item.shell}}"
+  with_items: "{{users}}"

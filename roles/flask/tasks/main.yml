@@ -1,0 +1,28 @@
+---
+- name: " install python on centOs"
+  yum:
+          name: [python3, python3-pip]
+          state: present
+
+  when: ansible_facts['distribution'] == 'CentOS'
+
+
+- name: " install python and flask on Ubuntu"
+  apt:
+          name: [python3, python3-pip]
+          state: present
+  when: ansible_facts['distribution'] == 'Ubuntu'
+
+
+- name: "install flask"
+  pip:
+          name: flask
+          state: present
+
+
+- name: " setup users"
+  user:
+          name: "{{item.username}}"
+          groups: developers
+          shell: "{{item.shell}}"
+  with_items: "{{users}}"
