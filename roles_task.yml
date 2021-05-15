@@ -3,3 +3,29 @@
   become: yes
   roles:
           - common
+
+
+- hosts: bd
+  become: yes
+  vars:
+          users:
+                  - username: "dev1"
+                    shell: "/bin/bash"
+                  - username: "dev2"
+                    shell: "/bin/zsh"
+
+  roles:
+          - nodejs
+
+
+- hosts: wd
+  become: yes
+  vars:
+          users:
+                  - username: "web1"
+                    shell: "/bin/bash"
+                  - username: "web2"
+                    shell: "/bin/zsh"
+  roles:
+          - flask
+
