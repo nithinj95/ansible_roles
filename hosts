@@ -1,0 +1,9 @@
+[wd]
+node1
+
+[bd]
+node3
+
+[devmachines:children]
+wd
+bd

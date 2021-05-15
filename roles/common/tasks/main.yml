@@ -1,0 +1,13 @@
+---
+- name: " install common packages for CentOS"
+  yum:
+          name: [git, zsh, vim]
+          state: present
+  when: ansible_facts['distribution'] == 'CentOS'
+          
+
+- name: "install common packages for Ubuntu"
+  apt:
+          name: [git, zsh, vim]
+          state: present
+  when: ansible_facts['distribution'] == 'Ubuntu'
