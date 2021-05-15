@@ -11,3 +11,8 @@
           name: [git, zsh, vim]
           state: present
   when: ansible_facts['distribution'] == 'Ubuntu'
+
+- name: "create a group"
+  group:
+          name: developers
+          state: present
